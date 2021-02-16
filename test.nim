@@ -15,10 +15,6 @@ const MAX_PATH = 260
     #    echo frame
 
 
-proc getFilesInDir(dir: string): seq[string] =
-    for file in walkDirRec(dir):
-        result.add(file)
-
 if paramCount() >= 1:
     let target = paramStr(0)
 

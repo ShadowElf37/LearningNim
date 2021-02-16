@@ -8,4 +8,9 @@ proc setDesktop*(img_path: cstring): bool =
     # 0s are nonsense and flags - there are some nice flags but many of them slow the operation down dramatically
     SystemParametersInfoA(0x0014, 0, img_path, 0)
 
-echo getDesktopWindow()
+from os import walkDirRec
+proc getFilesInDir*(dir: string): seq[string] =
+    for file in walkDirRec(dir):
+        result.add(file)
+
+# echo getDesktopWindow()
