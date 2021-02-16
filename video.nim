@@ -1,10 +1,4 @@
-import mpeg
-import os
+import vapoursynth
 
-const vp = "C:\\Users\\yovel\\Desktop\\sample.mpg"
+#const vp = "C:\\Users\\yovel\\Desktop\\sample.mov"
 
-var player = plm_create_with_filename(vp)
-
-var frame = player.plm_decode_video()
-
-echo frame[]
