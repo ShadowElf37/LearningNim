@@ -1,4 +1,3 @@
-import vapoursynth
+import libav_nim
 
-#const vp = "C:\\Users\\yovel\\Desktop\\sample.mov"
-
+const path = "C:\\Users\\yovel\\Desktop\\final.mp4"
