@@ -1,3 +1,8 @@
+echo """
+Error: invalid arguments.
+Syntax:
+"""
+
 echo ord(fmRead)
 echo ord(fmWrite)
 echo ord(fmReadWrite)
