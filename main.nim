@@ -150,6 +150,7 @@ var
     frame: ptr VSFrameRef
     Y, U, V: pointer
 
+echo "Press CTRL+C or close this window at any time to stop the program. Feel free to minimize it in the meantime."
 echo "Rendering..."
 while running:
     if FILETYPE == 'V':
