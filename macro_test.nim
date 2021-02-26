@@ -1,7 +1,11 @@
 import macros
 import strutils
 
-macro struct(head: untyped, vars: untyped): untyped =
+dumpAstGen:
+    type o = object
+        a: int
+
+macro struct(head: untyped, vars: nnkRecList): untyped =
     #echo treeRepr(head)
     #echo treeRepr(vars)
     var recList = newNimNode(nnkRecList)
@@ -44,12 +48,9 @@ macro struct(head: untyped, vars: untyped): untyped =
                )
              )
 
-
-struct UDPHeader:
-    uint16 src
-    uint16 dst
-    uint16 length
-    uint16 checksum
+expandMacros:
+    struct UDPHeader:
+        src: uint16
 
 #[
 type
@@ -63,10 +64,7 @@ type
 var o = new UDPHeader
 
 o.src = 0xA7BC
-o.dst = 0x8273
-o.length = 0x0100
-o.checksum = 0xFFFF
 
-echo cast[uint64](o[])
+echo o[]
 
 # 18446463700433086396
