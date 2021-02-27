@@ -133,6 +133,9 @@ proc center*[N: static[int]](vectors: varargs[Vector[N]]): Vector[N] =
         result = result + v
     result = result / float64(vectors.len)
 
+proc dim*[N: static[int]](v: Vector[N]): int =
+    v.elements.len()
+
 
 let shape1 = [
     Vector2(1, 1),
@@ -144,8 +147,8 @@ let shape1 = [
 let shape2 = [
     Vector2(2, 2),
     Vector2(2, 0),
-    Vector2(0, 0),
-    Vector2(0, 2)
+    Vector2(0.9, 0),
+    Vector2(0.9, 2)
 ]
 
 let axis = randomOrth(shape1[1] - shape1[0])
@@ -171,8 +174,16 @@ for vertex in shape2:
     elif p.dot(axis) > shape2_minmax[1].dot(axis):
         shape2_minmax[1] = p + offset
 
-if testAllElems(shape1_minmax[0] - shape2_minmax[1], e > 0):
-    echo true
+
+var intersect = true
+for i in countup(0, shape1[0].dim()-1):
+    if shape1_minmax[0][i] > shape2_minmax[1][i] or shape2_minmax[0][i] > shape1_minmax[1][i]:
+        echo "not intersecting"
+        intersect = false
+        break
+
+if intersect: echo "intersecting"
+
 
 echo shape1_minmax
 echo shape2_minmax
