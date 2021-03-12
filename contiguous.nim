@@ -190,8 +190,8 @@ discard Entities.reserve()
 echo "ITER TEST"
 for e in Entities:
     echo e
-for e in Entities.reserved():
-    echo e
+for e in Entities.reserved_ptrs():
+    echo e[]
 
 
 #echo Entities.create()[]
